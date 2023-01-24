@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="h-screen w-full flex justify-center items-center login-container">
+    <img class="background" src="assets/background.jpg" alt="Marvel">
+    <ion-card>
+      <ion-card-content>
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 class="text-xl font-bold text-gray-900 md:text-2xl">
+            Marvel Hero App
+          </h1>
+          <form class="space-y-4 md:space-y-6" [formGroup]="loginForm">
+            <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-input-text"
+                placeholder="email@email.com"
+                formControlName="email"
+              >
+            </div>
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                class="form-input-text"
+                formControlName="password"
+              >
+            </div>
+            <div class="pt-2">
+              <ion-button expand="block" (click)="login()">
+                Login
+              </ion-button>
+            </div>
+          </form>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
