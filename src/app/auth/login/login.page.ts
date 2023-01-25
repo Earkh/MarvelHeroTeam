@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
+  errorMessage: string;
 
   constructor(
     private menuCtrl: MenuController,
@@ -19,9 +20,8 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    this.menuCtrl.enable(false);
     this.loginForm = this.fb.group({
-      email: ['user1@tmail.com', Validators.required],
+      email: ['pepelopez@email.com', Validators.required],
       password: ['123456', Validators.required],
     })
   }
@@ -31,10 +31,9 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    let isUser = this.authService.login(this.loginForm.value);
-    if (isUser) {
-      this.router.navigate(['/hero'])
-    }
+    this.authService.simulatedLogin(this.loginForm.value)
+      ? this.router.navigate(['/hero'])
+      : this.errorMessage = 'Email/Contraseña inválido';
   }
 
 

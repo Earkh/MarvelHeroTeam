@@ -35,6 +35,9 @@
                 Login
               </ion-button>
             </div>
+            <div *ngIf="errorMessage">
+              <ion-text>{{errorMessage}}</ion-text>
+            </div>
           </form>
         </div>
       </ion-card-content>
