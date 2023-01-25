@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { HeroRoutingModule } from './hero-routing.module';
@@ -11,7 +12,8 @@ import { HeroViewPage } from './hero-view/hero-view.page';
   imports: [
     CommonModule,
     IonicModule,
-    HeroRoutingModule
+    HeroRoutingModule,
+    FormsModule
   ],
   declarations: [
     HeroListPage,

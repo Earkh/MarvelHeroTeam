@@ -14,8 +14,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">Hero View</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" class="h-full w-full flex justify-center items-center login-container">
+    <div>
+      <img class="background" src="assets/background.jpg" alt="Marvel">
+      <ion-card>
+        <ng-container *ngIf="hero$ | async as hero; else loading">
+          <ion-card-header>
+            <ion-card-title>
+              <h2>{{ hero.name }}</h2>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ hero.description }}</p>
+          </ion-card-content>
+        </ng-container>
+        <ng-template #loading>
+          <div class="h-full w-full flex justify-center items-center">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+        </ng-template>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

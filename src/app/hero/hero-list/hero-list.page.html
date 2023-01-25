@@ -15,7 +15,30 @@
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">Hero List</strong>
-    <p>Explore <a routerLink="5">Spiderman</a></p>
+    <div>
+      <input
+        type="text"
+        id="heroName"
+        class="form-input-text"
+        placeholder="Introduce nombre heroe para buscar ..."
+        [(ngModel)]="heroName"
+        (input)="searchHeroesByName()"
+      >
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let hero of heroesList" routerLink="/hero/{{hero.id}}">
+        <div>
+          <ion-avatar slot="start">
+            <img [src]="hero.thumbnail.path+'.'+hero.thumbnail.extension" [alt]="hero.name">
+          </ion-avatar>
+        </div>
+        <div>
+          <ion-label>
+            <h2>{{ hero.name }}</h2>
+          </ion-label>
+        </div>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
+

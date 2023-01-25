@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-hero-view',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroViewPage implements OnInit {
 
-  constructor() { }
+  hero$: Observable<any>;
+
+  constructor(
+    private heroService: HeroService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.hero$ = this.activatedRoute.paramMap
+      .pipe(
+        switchMap(({params}: Params) => {
+          return this.heroService.getHero(Number(params.id));
+        })
+      );
   }
 
 }
