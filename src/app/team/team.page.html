@@ -8,14 +8,49 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Team</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">Team</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" class="h-full w-full flex justify-center items-center login-container"
+       *ngIf="team$ | async as team"
+  >
+    <div>
+      <img class="background" src="assets/background.jpg" alt="Marvel">
+      <ion-card class="w-100">
+        <ion-card-header>
+          <ion-item lines="none">
+            <ion-card-title>
+              {{ team.name }}
+            </ion-card-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="presentModal()">
+                <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+          <ion-item lines="none" class="pr-14">
+            <ion-card-subtitle>
+              {{ team.desc }}
+            </ion-card-subtitle>
+          </ion-item>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-list id="labels-list">
+            <ion-item *ngFor="let hero of team.heroes" lines="none" routerLink="/hero/{{hero.id}}">
+              <div>
+                <ion-avatar slot="start">
+                  <img [src]="hero.thumbnail.path+'.'+hero.thumbnail.extension" [alt]="hero.name">
+                </ion-avatar>
+              </div>
+              <ion-label>{{ hero.name }}</ion-label>
+              <ion-buttons slot="end">
+                <ion-button (click)="$event.preventDefault(); removeHero(hero)">
+                  <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

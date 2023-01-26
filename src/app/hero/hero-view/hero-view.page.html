@@ -8,12 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Hero View</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container" class="h-full w-full flex justify-center items-center login-container">
     <div>
       <img class="background" src="assets/background.jpg" alt="Marvel">
@@ -26,6 +20,9 @@
           </ion-card-header>
           <ion-card-content>
             <p>{{ hero.description }}</p>
+            <ion-button (click)="addHeroToTeam(hero)">
+              Añadir al equipo
+            </ion-button>
           </ion-card-content>
         </ng-container>
         <ng-template #loading>

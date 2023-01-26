@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { TeamPageRoutingModule } from './team-routing.module';
-
 import { TeamPage } from './team.page';
+import { EditInfoModalComponent } from './components/edit-info-modal/edit-info-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TeamPageRoutingModule
+    TeamPageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [TeamPage]
+  declarations: [
+    TeamPage,
+    EditInfoModalComponent
+  ]
 })
 export class TeamPageModule {}

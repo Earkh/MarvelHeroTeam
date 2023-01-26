@@ -11,11 +11,14 @@ const routes: Routes = [
   {
     path: 'hero',
     loadChildren: () => import('./hero/hero.module').then(m => m.HeroModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [ AuthGuard ],
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'team',
-    loadChildren: () => import('./team/team.module').then( m => m.TeamPageModule)
+    loadChildren: () => import('./team/team.module').then( m => m.TeamPageModule),
+    canLoad: [ AuthGuard ],
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'login',

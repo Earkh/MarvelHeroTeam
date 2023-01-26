@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import { AuthService } from './auth/services/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth/services/auth.service';
+import { TeamService } from './team/services/team.service';
 import { IUser } from './auth/interfaces/auth.interface';
 
 
@@ -17,15 +18,16 @@ export class AppComponent implements OnInit {
     { title: 'Gestión equipo', url: '/team', icon: 'accessibility' },
     { title: 'Logout', url: '/auth', icon: 'log-out' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
   user$: Observable<IUser>
+  team$: Observable<any>
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private teamService: TeamService
   ) {}
 
   ngOnInit() {
     this.user$ = this.authService.user$;
+    this.team$ = this.teamService.team$;
   }
 }

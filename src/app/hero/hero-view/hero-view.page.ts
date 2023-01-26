@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { HeroService } from '../services/hero.service';
+import { TeamService } from '../../team/services/team.service';
 
 @Component({
   selector: 'app-hero-view',
@@ -13,8 +14,9 @@ export class HeroViewPage implements OnInit {
   hero$: Observable<any>;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private heroService: HeroService,
-    private activatedRoute: ActivatedRoute
+    private teamService: TeamService
   ) { }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class HeroViewPage implements OnInit {
           return this.heroService.getHero(Number(params.id));
         })
       );
+  }
+
+  addHeroToTeam(hero: any) {
+    this.teamService.addHero(hero)
   }
 
 }

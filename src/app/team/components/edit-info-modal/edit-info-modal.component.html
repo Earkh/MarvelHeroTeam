@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar equipo</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="teamForm">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+    <input
+      type="text"
+      id="name"
+      class="form-input-text"
+      placeholder="Nombre del equipo"
+      formControlName="name"
+    >
+    <label for="desc" class="block mb-2 text-sm font-medium text-gray-900">Descripción</label>
+    <input
+      type="text"
+      id="desc"
+      class="form-input-text"
+      placeholder="Descripción del equipo"
+      formControlName="desc"
+    >
+    <div class="pt-2">
+      <ion-button expand="block" (click)="updateTeamData()">
+        Guardar
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
