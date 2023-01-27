@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  MARVEL_TOKEN: 'f7c7d25dd9d1baffe5a44fa61d760e20'
+  MARVEL_TOKEN: 'f7c7d25dd9d1baffe5a44fa61d760e20',
+  TEAM_MAX_LENGTH: 6
 };
 
 /*

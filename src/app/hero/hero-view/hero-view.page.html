@@ -20,7 +20,7 @@
           </ion-card-header>
           <ion-card-content>
             <p>{{ hero.description }}</p>
-            <ion-button (click)="addHeroToTeam(hero)">
+            <ion-button (click)="addHeroToTeam(hero)" [disabled]="isHeroAlreadyInTeam(hero) || isTeamComplete">
               Añadir al equipo
             </ion-button>
           </ion-card-content>

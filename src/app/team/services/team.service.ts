@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {IUser} from "../../auth/interfaces/auth.interface";
-import {ITeamDataForm} from "../interfaces/team.interface";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ITeam, ITeamDataForm } from '../interfaces/team.interface';
+import { IHero } from '../../hero/interfaces/hero.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +14,24 @@ export class TeamService {
     heroes: []
   });
 
-  get team$(): Observable<IUser | any> {
+  get team$(): Observable<ITeam | any> {
     return this._team$;
   }
 
   constructor() { }
 
-  addHero(hero: any): void {
-    if (!this._team$.getValue().heroes.includes(hero)) {
-      this._team$.next({
-        ...this._team$.getValue(),
-        heroes: [...this._team$.getValue().heroes, hero]
-      })
-    }
+  addHero(hero: IHero): void {
+    this._team$.next({
+      ...this._team$.getValue(),
+      heroes: [...this._team$.getValue().heroes, hero]
+    })
   }
 
-  removeHero(hero: any): void {
-    this._team$.next(this._team$.getValue().heroes.filter((teamHero: any) => teamHero.id !== hero.id))
+  removeHero(hero: IHero): void {
+    this._team$.next({
+      ...this._team$.getValue(),
+      heroes: this._team$.getValue().heroes.filter((teamHero: IHero) => teamHero.id !== hero.id)
+    })
   }
 
   editTeamInfo(teamInfo: ITeamDataForm) {
