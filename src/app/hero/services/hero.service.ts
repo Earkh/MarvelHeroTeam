@@ -14,8 +14,8 @@ export class HeroService {
 
   constructor(private http: HttpClient) { }
 
-  getAllHeroes(): Observable<IHero[]> {
-    return this.http.get<IHero[]>(`${this.API_URL}characters?ts=1&apikey=${this.API_KEY}`)
+  getAllHeroes(limit: number, offset: number): Observable<IHero[]> {
+    return this.http.get<IHero[]>(`${this.API_URL}characters?ts=1&limit=${limit}&offset=${offset}&apikey=${this.API_KEY}`)
       .pipe(
         map((data: any) => data.data.results)
       )
