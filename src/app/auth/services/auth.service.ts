@@ -50,6 +50,5 @@ export class AuthService {
     localStorage.removeItem('user');
     this.menuCtrl.enable(false, 'user-menu');
     this.router.navigate(['/login']);
-
   }
 }

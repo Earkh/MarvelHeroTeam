@@ -1,9 +1,9 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/services/auth.service';
 import { TeamService } from './team/services/team.service';
 import { IUser } from './auth/interfaces/auth.interface';
-import {ITeam} from "./team/interfaces/team.interface";
+import { ITeam } from './team/interfaces/team.interface';
 
 
 
@@ -12,7 +12,7 @@ import {ITeam} from "./team/interfaces/team.interface";
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
 
   public appPages = [
     { title: 'Heroes', url: '/hero', icon: 'list' },
@@ -29,10 +29,6 @@ export class AppComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.user$ = this.authService.user$;
     this.team$ = this.teamService.team$;
-  }
-
-  ngOnChanges() {
-    console.log('onChange -> Team: ', this.team$);
   }
 
   logout() {
