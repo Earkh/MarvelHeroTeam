@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  MARVEL_TOKEN: 'YOUR_MARVEL_TOKEN_HERE'
+  MARVEL_TOKEN: 'f7c7d25dd9d1baffe5a44fa61d760e20'
 };
 
 /*

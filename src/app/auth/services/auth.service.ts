@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {IUser} from '../interfaces/auth.interface';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IUser } from '../interfaces/auth.interface';
+import { MenuController } from "@ionic/angular";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,16 @@ export class AuthService {
 
   private _user$ = new BehaviorSubject<IUser | null>(null)
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private menuCtrl: MenuController
+  ) {
+    if (localStorage.hasOwnProperty('user')) {
+      const userData: IUser = JSON.parse(localStorage.getItem('user')!);
+      this._user$.next(userData);
+      this.router.navigate(['/hero'])
+    }
+  }
 
   get user$(): Observable<IUser | any> {
     return this._user$;
@@ -20,11 +31,14 @@ export class AuthService {
 
   simulatedLogin(userData: any): boolean {
     if  (userData.email === this.FAKE_EMAIL && userData.password === this.FAKE_PASSWORD) {
-      this._user$.next({
+      const userData = {
         id: 1,
         email: this.FAKE_EMAIL,
         name: 'Pepe López'
-      });
+      }
+      this._user$.next(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
+      this.router.navigate(['/hero'])
       return true;
     } else {
       return false;
@@ -33,5 +47,9 @@ export class AuthService {
 
   logout() {
     this._user$.next(null);
+    localStorage.removeItem('user');
+    this.menuCtrl.enable(false, 'user-menu');
+    this.router.navigate(['/login']);
+
   }
 }

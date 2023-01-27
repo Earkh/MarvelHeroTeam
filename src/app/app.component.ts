@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   public appPages = [
     { title: 'Heroes', url: '/hero', icon: 'list' },
     { title: 'Gestión equipo', url: '/team', icon: 'accessibility' },
-    { title: 'Logout', url: '/auth', icon: 'log-out' },
   ];
   user$: Observable<IUser>
   team$: Observable<any>
@@ -29,5 +28,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.user$ = this.authService.user$;
     this.team$ = this.teamService.team$;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
