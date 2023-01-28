@@ -25,6 +25,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+/* Rubik Font */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,6 +36,10 @@
   .form-input-text {
     @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded block w-full p-2.5;
   }
+}
+
+* {
+  font-family: 'Rubik', sans-serif;
 }
 
 ion-avatar {
