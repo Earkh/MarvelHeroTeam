@@ -22,14 +22,7 @@
 
         <ion-list id="labels-list" *ngIf="team$ | async as team">
           <p class="accent-neutral-800 mt-4 mb-6 pl-2 text-lg">{{ team.name || 'Mi Equipo' }}</p>
-          <ion-item *ngFor="let hero of team.heroes" lines="none" routerLink="/hero/{{hero.id}}">
-            <div>
-              <ion-avatar slot="start">
-                <img [src]="hero.thumbnail.path+'.'+hero.thumbnail.extension" [alt]="hero.name">
-              </ion-avatar>
-            </div>
-            <ion-label>{{ hero.name }}</ion-label>
-          </ion-item>
+          <app-hero-swiper [team]="team.heroes || []"></app-hero-swiper>
         </ion-list>
       </ion-content>
     </ion-menu>

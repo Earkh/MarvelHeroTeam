@@ -32,6 +32,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~swiper/swiper-bundle.min.css';
+@import '~@ionic/angular/css/ionic-swiper.css';
+
 @layer components {
   .form-input-text {
     @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded block w-full p-2.5;

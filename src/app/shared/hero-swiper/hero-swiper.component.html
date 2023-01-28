@@ -1,0 +1,8 @@
+<swiper
+  #teamSlider
+  [config]="swiperConfig"
+>
+  <ng-template swiperSlide *ngFor="let hero of team">
+    <app-hero-card [hero]="hero"></app-hero-card>
+  </ng-template>
+</swiper>
