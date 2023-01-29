@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { TeamService } from './services/team.service';
 import { EditInfoModalComponent } from './components/edit-info-modal/edit-info-modal.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-team',
@@ -12,6 +13,7 @@ import { EditInfoModalComponent } from './components/edit-info-modal/edit-info-m
 export class TeamPage implements OnInit {
 
   team$: Observable<any>
+  teamMaxLength = environment.TEAM_MAX_LENGTH;
 
   constructor(
     private teamService: TeamService,
@@ -20,10 +22,6 @@ export class TeamPage implements OnInit {
 
   ngOnInit() {
     this.team$ = this.teamService.team$;
-  }
-
-  removeHero(hero: any) {
-    this.teamService.removeHero(hero);
   }
 
   async presentModal() {

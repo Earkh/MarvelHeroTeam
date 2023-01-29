@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { TeamPageRoutingModule } from './team-routing.module';
 import { TeamPage } from './team.page';
 import { EditInfoModalComponent } from './components/edit-info-modal/edit-info-modal.component';
+import { HeroModule } from '../hero/hero.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { EditInfoModalComponent } from './components/edit-info-modal/edit-info-m
     FormsModule,
     IonicModule,
     TeamPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeroModule
   ],
   declarations: [
     TeamPage,

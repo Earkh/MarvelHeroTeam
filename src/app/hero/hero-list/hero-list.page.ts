@@ -39,7 +39,6 @@ export class HeroListPage implements OnInit {
     this.offset += 20;
     this.heroService.getAllHeroes(this.limit, this.offset).subscribe(data => {
       this.heroesList = this.heroesList.concat(data);
-      console.log(this.heroesList)
     })
     setTimeout(() => {
       (ev as InfiniteScrollCustomEvent).target.complete();

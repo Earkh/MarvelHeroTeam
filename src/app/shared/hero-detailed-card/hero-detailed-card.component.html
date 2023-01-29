@@ -12,6 +12,17 @@
     <div class="mt-20 pt-4 text-center">
       <h3 class="mb-1 text-2xl text-center text-gray-700 font-bold leading-normal">{{ hero.name }}</h3>
     </div>
+    <div class="w-full text-center">
+      <div class="flex justify-center pt-2 pb-0">
+        <div class="flex space-x-2">
+          <ion-buttons>
+            <ion-button (click)="addHeroToTeam(hero)" *ngIf="!isHeroAlreadyInTeam(hero); else removeHeroButton" [disabled]="isTeamComplete">
+              <ion-icon name="person-add-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </div>
+    </div>
     <div class="pt-6 mx-6 mt-6 text-center border-t border-gray-200">
       <div class="flex flex-wrap justify-center">
         <div class="w-full px-6">
@@ -44,3 +55,9 @@
     </div>
   </div>
 </div>
+
+<ng-template #removeHeroButton>
+  <ion-button (click)="removeHero(hero)">
+    <ion-icon name="person-remove-outline" slot="icon-only"></ion-icon>
+  </ion-button>
+</ng-template>

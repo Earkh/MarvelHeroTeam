@@ -7,6 +7,7 @@ import { HeroRoutingModule } from './hero-routing.module';
 import { HeroListPage } from './hero-list/hero-list.page';
 import { HeroViewPage } from './hero-view/hero-view.page';
 import { HeroDetailedCardComponent } from '../shared/hero-detailed-card/hero-detailed-card.component';
+import { HeroItemComponent } from '../shared/hero-item/hero-item.component';
 
 
 @NgModule({
@@ -19,7 +20,11 @@ import { HeroDetailedCardComponent } from '../shared/hero-detailed-card/hero-det
   declarations: [
     HeroListPage,
     HeroViewPage,
-    HeroDetailedCardComponent
+    HeroDetailedCardComponent,
+    HeroItemComponent
   ],
+  exports: [
+    HeroItemComponent
+  ]
 })
 export class HeroModule { }

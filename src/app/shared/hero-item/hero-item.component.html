@@ -1,0 +1,20 @@
+<ion-item class="pb-3 sm:pb-4 pointer">
+  <div class="flex items-center space-x-4">
+    <div class="flex-shrink-0">
+      <img class="w-8 h-8 rounded-full" [src]="hero.thumbnail?.path+'.'+hero.thumbnail.extension" [alt]="hero.name">
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-medium text-gray-900 truncate">
+        {{ hero.name }}
+      </p>
+      <p class="text-sm text-gray-500 truncate" *ngIf="hero.comics.items[0]">
+        {{ hero.comics.items[0].name }}
+      </p>
+    </div>
+  </div>
+  <ion-buttons slot="end">
+    <ion-button>
+      <ion-icon name="chevron-forward-outline" slot="icon-only" color="primary"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-item>
