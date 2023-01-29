@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import {AlertService} from "../../shared/services/alert.service";
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,11 @@ export class LoginPage {
   errorMessage: string;
 
   constructor(
-    private menuCtrl: MenuController,
+    private router: Router,
     private fb: FormBuilder,
+    private menuCtrl: MenuController,
     private authService: AuthService,
-    private router: Router
+    private alertCtrl: AlertService
   ) {
     this.menuCtrl.enable(false, 'user-menu');
     this.loginForm = this.fb.group({
@@ -34,6 +36,10 @@ export class LoginPage {
     } else {
       this.errorMessage = 'Email/Contraseña inválido';
     }
+  }
+
+  rememberUser() {
+    this.alertCtrl.presentSimpleAlert({subheader: 'pepelopez@email.com', message: '123456'})
   }
 
 
