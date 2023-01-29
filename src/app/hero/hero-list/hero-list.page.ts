@@ -10,7 +10,6 @@ import { HeroService } from '../services/hero.service';
 export class HeroListPage implements OnInit {
 
   heroesList: any[];
-  heroName: string;
 
   limit = 20;
   offset = 0;
@@ -23,13 +22,13 @@ export class HeroListPage implements OnInit {
     })
   }
 
-  searchHeroesByName() {
-    if (this.heroName.length >= 3) {
-      this.heroService.getHeroesByName(this.heroName).subscribe(data => {
+  searchHeroesByName(e: any) {
+    if (e.target.value.length >= 3) {
+      this.heroService.getHeroesByName(e.target.value).subscribe(data => {
         this.heroesList = data;
       })
     }
-    if (this.heroName.length === 0) {
+    if (e.target.value.length === 0) {
       this.heroService.getAllHeroes(20, 0).subscribe(data => {
         this.heroesList = data;
       })

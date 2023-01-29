@@ -53,6 +53,10 @@ ion-avatar {
   }
 }
 
+ion-label {
+  font-family: 'Rubik', sans-serif !important;
+}
+
 ion-modal {
   --height: 50%;
   --border-radius: 16px;
@@ -62,6 +66,18 @@ ion-modal {
 ion-modal::part(backdrop) {
   background: rgba(209, 213, 219);
   opacity: 1;
+}
+
+ion-spinner {
+  transform: scale(3);
+}
+
+ion-accordion-group{
+  ion-accordion {
+    .ion-accordion-toggle-icon {
+      color: var(--ion-color-primary);
+    }
+  }
 }
 
 .background {

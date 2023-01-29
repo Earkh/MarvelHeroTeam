@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { HeroRoutingModule } from './hero-routing.module';
 import { HeroListPage } from './hero-list/hero-list.page';
 import { HeroViewPage } from './hero-view/hero-view.page';
+import { HeroDetailedCardComponent } from '../shared/hero-detailed-card/hero-detailed-card.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HeroViewPage } from './hero-view/hero-view.page';
   ],
   declarations: [
     HeroListPage,
-    HeroViewPage
+    HeroViewPage,
+    HeroDetailedCardComponent
   ],
 })
 export class HeroModule { }

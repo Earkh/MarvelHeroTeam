@@ -11,26 +11,15 @@
   <div id="container" class="h-full w-full flex justify-center items-center login-container">
     <div>
       <img class="background" src="assets/background.jpg" alt="Marvel">
-      <ion-card>
-        <ng-container *ngIf="hero$ | async as hero; else loading">
-          <ion-card-header>
-            <ion-card-title>
-              <h2>{{ hero.name }}</h2>
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>{{ hero.description }}</p>
-            <ion-button (click)="addHeroToTeam(hero)" [disabled]="isHeroAlreadyInTeam(hero) || isTeamComplete">
-              Añadir al equipo
-            </ion-button>
-          </ion-card-content>
-        </ng-container>
-        <ng-template #loading>
-          <div class="h-full w-full flex justify-center items-center">
-            <ion-spinner name="crescent"></ion-spinner>
-          </div>
-        </ng-template>
-      </ion-card>
+      <div class='flex items-center justify-center min-h-screen min-w-screen' *ngIf="hero$ | async as hero; else loading">
+        <app-hero-detailed-card [hero]="hero"></app-hero-detailed-card>
+      </div>
     </div>
   </div>
 </ion-content>
+
+<ng-template #loading>
+  <div class="h-full w-full flex justify-center items-center">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ng-template>
