@@ -1,7 +1,7 @@
 <ion-item class="pointer">
   <div class="flex items-center space-x-4">
     <div class="flex-shrink-0">
-      <img class="w-8 h-8 rounded-full" [src]="hero.thumbnail?.path+'.'+hero.thumbnail.extension" [alt]="hero.name">
+      <img class="w-8 h-8 rounded-full" src="{{hero.thumbnail.path!}}.{{hero.thumbnail.extension!}}" [alt]="hero.name">
     </div>
     <div class="flex-1 min-w-0">
       <p class="text-sm font-medium text-gray-900 truncate">
@@ -9,7 +9,7 @@
       </p>
     </div>
   </div>
-  <ion-buttons slot="end">
+  <ion-buttons slot="end" class="pr-0">
     <ion-button>
       <ion-icon name="chevron-forward-outline" slot="icon-only" color="primary"></ion-icon>
     </ion-button>

@@ -6,8 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SwiperModule } from 'swiper/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeroCardComponent } from './shared/hero-card/hero-card.component';
-import { HeroSwiperComponent } from './shared/hero-swiper/hero-swiper.component';
+import { HeroCardComponent } from './shared/components/hero-card/hero-card.component';
+import { HeroSwiperComponent } from './shared/components/hero-swiper/hero-swiper.component';
 
 @NgModule({
   declarations: [AppComponent, HeroCardComponent, HeroSwiperComponent],

@@ -1,8 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IHero } from '../../hero/interfaces/hero.interface';
-import { environment } from '../../../environments/environment';
-import { TeamService } from '../../team/services/team.service';
+import { IHero } from '../../../hero/interfaces/hero.interface';
+import { environment } from '../../../../environments/environment';
+import { TeamService } from '../../../team/services/team.service';
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: 'app-hero-detailed-card',
@@ -16,7 +18,9 @@ export class HeroDetailedCardComponent implements OnInit, OnDestroy{
   teamSubs: Subscription;
 
   constructor(
-    private teamService: TeamService
+    private teamService: TeamService,
+    private alertService: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -26,11 +30,17 @@ export class HeroDetailedCardComponent implements OnInit, OnDestroy{
   }
 
   addHeroToTeam(hero: IHero) {
-    this.teamService.addHero(hero)
+    this.teamService.addHero(hero);
+    this.alertService.presentSimpleAlert({subheader: 'Héroe añadido correctamente'})
   }
 
   removeHero(hero: any) {
-    this.teamService.removeHero(hero);
+    this.alertService.presentConfirmationAlert({subheader: '¿Eliminar al Héroe del equipo?'}).then(data => {
+      if (data) {
+        this.teamService.removeHero(hero);
+        this.router.navigate(['/team']);
+      }
+    })
   }
 
   isHeroAlreadyInTeam(hero: IHero): boolean {

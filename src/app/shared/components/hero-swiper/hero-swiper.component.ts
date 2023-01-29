@@ -1,7 +1,7 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {Navigation, Pagination, SwiperOptions} from 'swiper';
-import { IHero } from '../../hero/interfaces/hero.interface';
+import { IHero } from '../../../hero/interfaces/hero.interface';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -10,7 +10,7 @@ SwiperCore.use([Navigation, Pagination]);
   templateUrl: './hero-swiper.component.html',
   styleUrls: ['./hero-swiper.component.scss'],
 })
-export class HeroSwiperComponent {
+export class HeroSwiperComponent implements AfterViewInit{
 
   swiperConfig: SwiperOptions = {
     centeredSlides: true,

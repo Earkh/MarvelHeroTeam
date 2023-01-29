@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img class="background" src="assets/background.jpg" alt="Marvel">
   <div id="container" class="h-full w-full flex flex-col lg:px-4 xl:px-8">
     <div>
       <ion-searchbar
@@ -30,7 +29,7 @@
 
 <ng-template #loading>
   <div class="h-full w-full flex-1 flex justify-center items-center">
-    <ion-spinner name="crescent"></ion-spinner>
+    <ion-spinner name="crescent" class="scale-150"></ion-spinner>
   </div>
 </ng-template>
 

@@ -58,7 +58,6 @@ ion-label {
 }
 
 ion-modal {
-  --height: 50%;
   --border-radius: 16px;
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
@@ -69,7 +68,7 @@ ion-modal::part(backdrop) {
 }
 
 ion-spinner {
-  color: var(--ion-color-primary);
+  color: var(--ion-color-tertiary);
 }
 
 ion-accordion-group{
@@ -77,6 +76,19 @@ ion-accordion-group{
     .ion-accordion-toggle-icon {
       color: var(--ion-color-primary);
     }
+  }
+}
+
+ion-item {
+  --inner-padding-end: 0;
+}
+
+.auto-height {
+  align-items: center;
+  justify-content: center;
+  &::part(content){
+    width: 80%;
+    height: 50%;
   }
 }
 

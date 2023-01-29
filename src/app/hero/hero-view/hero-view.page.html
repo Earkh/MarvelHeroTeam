@@ -11,7 +11,7 @@
   <div id="container" class="h-full w-full flex justify-center items-center login-container">
     <div>
       <img class="background" src="assets/background.jpg" alt="Marvel">
-      <div class='flex items-center justify-center min-h-screen min-w-screen' *ngIf="hero$ | async as hero; else loading">
+      <div class='flex items-center justify-center min-h-full min-w-screen' *ngIf="hero$ | async as hero; else loading">
         <app-hero-detailed-card [hero]="hero"></app-hero-detailed-card>
       </div>
     </div>

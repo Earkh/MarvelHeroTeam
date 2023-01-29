@@ -27,7 +27,7 @@ export class TeamPage implements OnInit {
   async presentModal() {
     const modal = await this.modalCtrl.create({
       component: EditInfoModalComponent,
-      cssClass: 'my-custom-class',
+      cssClass: 'auto-height',
     });
     return await modal.present();
   }
