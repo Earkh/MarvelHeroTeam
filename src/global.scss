@@ -88,7 +88,9 @@ ion-item {
   justify-content: center;
   &::part(content){
     width: 80%;
+    max-width: 500px;
     height: 50%;
+    max-height: 300px;
   }
 }
 

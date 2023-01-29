@@ -21,11 +21,16 @@
         </ion-list>
 
         <ion-list id="labels-list" *ngIf="team$ | async as team">
-          <p class="accent-neutral-800 mt-4 mb-6 pl-2 text-lg">{{ team.name || 'Mi Equipo' }}</p>
-          <app-hero-swiper [team]="team.heroes || []"></app-hero-swiper>
+          <p class="accent-neutral-800 mt-4 mb-6 pl-2 text-lg">{{ team.name || 'Mi Equipo:' }}</p>
+          <app-hero-swiper [team]="team.heroes" *ngIf="team.heroes && team.heroes.length > 0; else emptyTeam"></app-hero-swiper>
         </ion-list>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
+  <ng-template #emptyTeam>
+    <p class="pl-2 text-zinc-600">
+      No tienes ningún héroe en tu equipo.
+    </p>
+  </ng-template>
 </ion-app>
