@@ -9,15 +9,16 @@
 
 <ion-content [fullscreen]="true">
   <img class="background" src="assets/background.jpg" alt="Marvel">
-  <div id="container" class="h-full w-full flex flex-col">
+  <div id="container" class="h-full w-full flex flex-col lg:px-4 xl:px-8">
     <div>
       <ion-searchbar
         placeholder="Introduce nombre héroe ..."
         (ionInput)="searchHeroesByName($event)"
+        class="lg:px-0 lg:py-4 xl:py-8"
       ></ion-searchbar>
     </div>
     <ng-container *ngIf="heroesList; else loading">
-      <ion-list class="rounded-t-lg">
+      <ion-list class="rounded-t-sm">
         <app-hero-item *ngFor="let hero of heroesList" routerLink="/hero/{{hero.id}}" [hero]="hero"></app-hero-item>
       </ion-list>
       <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">

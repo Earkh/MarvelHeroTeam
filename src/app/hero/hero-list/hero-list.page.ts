@@ -11,7 +11,7 @@ export class HeroListPage implements OnInit {
 
   heroesList: any[];
 
-  limit = 20;
+  limit = 30;
   offset = 0;
 
   constructor(private heroService: HeroService) { }
@@ -36,7 +36,7 @@ export class HeroListPage implements OnInit {
   }
 
   onIonInfinite(ev: Event) {
-    this.offset += 20;
+    this.offset += 30;
     this.heroService.getAllHeroes(this.limit, this.offset).subscribe(data => {
       this.heroesList = this.heroesList.concat(data);
     })
