@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./features/auth/login/login.module').then( m => m.LoginPageModule),
     canActivate: [ LoginGuard ]
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./extrapages/extrapages.module').then(m => m.NotFound404PageModule)
   }
 ];
 

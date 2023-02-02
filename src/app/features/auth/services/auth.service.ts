@@ -21,7 +21,6 @@ export class AuthService {
     if (localStorage.hasOwnProperty('user')) {
       const userData: IUser = JSON.parse(localStorage.getItem('user')!);
       this._user$.next(userData);
-      this.router.navigate(['/hero'])
     }
   }
 
