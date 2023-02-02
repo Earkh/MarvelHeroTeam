@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { SwiperModule } from 'swiper/angular';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroDetailedCardComponent } from './components/hero-detailed-card/hero-detailed-card.component';
 import { HeroItemComponent } from './components/hero-item/hero-item.component';
 import { HeroSwiperComponent } from './components/hero-swiper/hero-swiper.component';
-import { SwiperModule } from 'swiper/angular';
+import { ErrorCardComponent } from './components/error-card/error-card.component';
 
 
 
@@ -14,7 +15,8 @@ import { SwiperModule } from 'swiper/angular';
     HeroCardComponent,
     HeroDetailedCardComponent,
     HeroItemComponent,
-    HeroSwiperComponent
+    HeroSwiperComponent,
+    ErrorCardComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { SwiperModule } from 'swiper/angular';
     HeroCardComponent,
     HeroDetailedCardComponent,
     HeroItemComponent,
-    HeroSwiperComponent
+    HeroSwiperComponent,
+    ErrorCardComponent
   ]
 })
 export class SharedModule { }

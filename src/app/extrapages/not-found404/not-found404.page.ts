@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import {LayoutService} from "../../layouts/services/layout.service";
+import { LayoutService } from '../../layouts/services/layout.service';
 
 @Component({
   selector: 'app-not-found404',
@@ -10,16 +9,11 @@ import {LayoutService} from "../../layouts/services/layout.service";
 export class NotFound404Page {
 
   constructor(
-    private layoutService: LayoutService,
-    private location: Location
+    private layoutService: LayoutService
   ) { }
 
   ionViewWillEnter() {
     this.layoutService.setFullPageLayout();
-  }
-
-  goBack() {
-    this.location.back()
   }
 
 }

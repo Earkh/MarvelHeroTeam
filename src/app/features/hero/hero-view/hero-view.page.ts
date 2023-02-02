@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { catchError, Observable, of, Subject, switchMap } from 'rxjs';
 import { HeroService } from '../services/hero.service';
 import { IHero } from '../interfaces/hero.interface';
 import { LayoutService } from '../../../layouts/services/layout.service';
@@ -13,11 +14,13 @@ import { LayoutService } from '../../../layouts/services/layout.service';
 export class HeroViewPage implements OnInit {
 
   hero$: Observable<IHero>;
+  error$ = new Subject<boolean>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private heroService: HeroService,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -25,8 +28,16 @@ export class HeroViewPage implements OnInit {
       .pipe(
         switchMap(({params}: Params) => {
           return this.heroService.getHero(Number(params.id));
-        })
+        }),
+          catchError((error) => {
+            this.error$.next(true);
+            return of();
+          })
       );
+  }
+
+  goBack() {
+    this.location.back()
   }
 
   ionViewWillEnter() {

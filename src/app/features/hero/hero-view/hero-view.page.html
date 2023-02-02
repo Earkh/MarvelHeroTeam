@@ -2,15 +2,23 @@
   <div id="container" class="h-full w-full flex justify-center items-center login-container">
     <div>
       <img class="background" src="assets/background.jpg" alt="Marvel">
-      <div class='flex items-center justify-center min-h-full min-w-screen' *ngIf="hero$ | async as hero; else loading">
+      <div class='flex flex-col items-center justify-center min-h-full min-w-screen' *ngIf="hero$ | async as hero; else errorOrLoading">
         <app-hero-detailed-card [hero]="hero"></app-hero-detailed-card>
+        <ion-button (click)="goBack()" class="mt-4">Volver</ion-button>
       </div>
     </div>
   </div>
 </ion-content>
 
-<ng-template #loading>
-  <div class="h-full w-full flex justify-center items-center">
-    <ion-spinner name="crescent"></ion-spinner>
+<ng-template #errorOrLoading>
+
+  <div *ngIf="error$ | async; else loading">
+    <app-error-card [error]="{header: 'Error', message: 'No se ha encontrado ningún Héroe con esa Id.'}"></app-error-card>
   </div>
+
+  <ng-template #loading>
+    <div class="h-full w-full flex justify-center items-center">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </ng-template>
 </ng-template>
