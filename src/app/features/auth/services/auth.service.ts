@@ -48,6 +48,6 @@ export class AuthService {
     this._user$.next(null);
     localStorage.removeItem('user');
     this.menuCtrl.enable(false, 'user-menu');
-    this.router.navigate(['/login']);
+    this.router.navigateByUrl('/login');
   }
 }
