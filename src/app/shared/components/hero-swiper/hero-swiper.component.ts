@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {Navigation, Pagination, SwiperOptions} from 'swiper';
-import { IHero } from '../../../hero/interfaces/hero.interface';
+import { IHero } from '../../../features/hero/interfaces/hero.interface';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -42,10 +42,6 @@ export class HeroSwiperComponent implements AfterViewInit{
       this.animationInProgress = false;
       this.startAnimation();
     }, 5000);
-  }
-
-  next() {
-    this.teamSlider.swiperRef.slideNext(1000);
   }
 
 }

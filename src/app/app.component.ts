@@ -1,37 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth/services/auth.service';
-import { TeamService } from './team/services/team.service';
-import { IUser } from './auth/interfaces/auth.interface';
-import { ITeam } from './team/interfaces/team.interface';
-
-
+import { LayoutConfig, LayoutService } from './layouts/services/layout.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  public appPages = [
-    { title: 'Heroes', url: '/hero', icon: 'list' },
-    { title: 'Gestión equipo', url: '/team', icon: 'accessibility' },
-  ];
-  user$: Observable<IUser>
-  team$: Observable<ITeam>
+  layoutConfig$: Observable<LayoutConfig>;
 
   constructor(
-    private authService: AuthService,
-    private teamService: TeamService
-  ) {}
-
-  ngOnInit() {
-    this.user$ = this.authService.user$;
-    this.team$ = this.teamService.team$;
+    private layoutService: LayoutService
+  ) {
+    this.layoutConfig$ = this.layoutService.config();
   }
 
-  logout() {
-    this.authService.logout();
-  }
 }

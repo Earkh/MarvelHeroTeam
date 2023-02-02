@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../interfaces/auth.interface';
-import { MenuController } from "@ionic/angular";
 
 @Injectable({
   providedIn: 'root'

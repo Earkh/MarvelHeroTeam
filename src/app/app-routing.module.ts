@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth/guards/auth.guard';
-import { LoginGuard } from './auth/guards/login.guard';
+import { AuthGuard } from './features/auth/guards/auth.guard';
+import { LoginGuard } from './features/auth/guards/login.guard';
 
 const routes: Routes = [
   {
@@ -11,19 +11,17 @@ const routes: Routes = [
   },
   {
     path: 'hero',
-    loadChildren: () => import('./hero/hero.module').then(m => m.HeroModule),
-    canLoad: [ AuthGuard ],
+    loadChildren: () => import('./features/hero/hero.module').then(m => m.HeroModule),
     canActivate: [ AuthGuard ]
   },
   {
     path: 'team',
-    loadChildren: () => import('./team/team.module').then( m => m.TeamPageModule),
-    canLoad: [ AuthGuard ],
+    loadChildren: () => import('./features/team/team.module').then( m => m.TeamPageModule),
     canActivate: [ AuthGuard ]
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
+    loadChildren: () => import('./features/auth/login/login.module').then( m => m.LoginPageModule),
     canActivate: [ LoginGuard ]
   }
 ];

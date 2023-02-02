@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { HeroService } from '../services/hero.service';
 import { IHero } from '../interfaces/hero.interface';
-
+import { LayoutService } from '../../../layouts/services/layout.service';
 
 @Component({
   selector: 'app-hero-view',
@@ -16,7 +16,8 @@ export class HeroViewPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private heroService: HeroService
+    private heroService: HeroService,
+    private layoutService: LayoutService
   ) { }
 
   ngOnInit() {
@@ -26,6 +27,10 @@ export class HeroViewPage implements OnInit {
           return this.heroService.getHero(Number(params.id));
         })
       );
+  }
+
+  ionViewWillEnter() {
+    this.layoutService.setFullPageLayout();
   }
 
 }

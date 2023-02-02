@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
 import { TeamService } from './services/team.service';
 import { EditInfoModalComponent } from './components/edit-info-modal/edit-info-modal.component';
-import { environment } from '../../environments/environment';
+import { LayoutService } from '../../layouts/services/layout.service';
 
 @Component({
   selector: 'app-team',
@@ -17,11 +19,16 @@ export class TeamPage implements OnInit {
 
   constructor(
     private teamService: TeamService,
+    private layoutService: LayoutService,
     private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
     this.team$ = this.teamService.team$;
+  }
+
+  ionViewWillEnter() {
+    this.layoutService.setFullPageLayout();
   }
 
   async presentModal() {

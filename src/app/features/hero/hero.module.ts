@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
+import { SharedModule } from '../../shared/shared.module';
 import { HeroRoutingModule } from './hero-routing.module';
 import { HeroListPage } from './hero-list/hero-list.page';
 import { HeroViewPage } from './hero-view/hero-view.page';
-import { HeroDetailedCardComponent } from '../shared/components/hero-detailed-card/hero-detailed-card.component';
-import { HeroItemComponent } from '../shared/components/hero-item/hero-item.component';
+
 
 
 @NgModule({
@@ -15,16 +14,12 @@ import { HeroItemComponent } from '../shared/components/hero-item/hero-item.comp
     CommonModule,
     IonicModule,
     HeroRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [
     HeroListPage,
-    HeroViewPage,
-    HeroDetailedCardComponent,
-    HeroItemComponent
-  ],
-  exports: [
-    HeroItemComponent
+    HeroViewPage
   ]
 })
 export class HeroModule { }

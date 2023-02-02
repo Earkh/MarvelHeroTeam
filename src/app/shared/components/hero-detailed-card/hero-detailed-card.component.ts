@@ -1,10 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IHero } from '../../../hero/interfaces/hero.interface';
+
 import { environment } from '../../../../environments/environment';
-import { TeamService } from '../../../team/services/team.service';
-import { AlertService } from "../../services/alert.service";
+import { TeamService } from '../../../features/team/services/team.service';
+import { AlertService } from '../../services/alert.service';
+import { IHero } from '../../../features/hero/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero-detailed-card',

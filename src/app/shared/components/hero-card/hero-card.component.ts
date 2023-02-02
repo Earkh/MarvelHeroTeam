@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { IHero } from '../../../hero/interfaces/hero.interface';
+import { IHero } from '../../../features/hero/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero-card',

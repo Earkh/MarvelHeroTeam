@@ -1,36 +1,14 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu menuId="user-menu" contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <img src="/assets/logo.png" alt="Marvel Hero Team">
+  <ng-container *ngIf="(layoutConfig$ | async)?.header">
+    <app-header></app-header>
+  </ng-container>
 
-          <p *ngIf="user$ | async as user" class="accent-neutral-800 mt-4 mb-6 pl-2 text-lg">Bienvenido, <span>{{ user.name }}</span></p>
+  <ng-container *ngIf="(layoutConfig$ | async)?.layout">
+    <ng-container *ngComponentOutlet="(layoutConfig$ | async)?.layout"></ng-container>
+  </ng-container>
 
-          <ion-menu-toggle auto-hide="false">
-            <ion-item *ngFor="let p of appPages; let i = index" routerDirection="root" [routerLink]="[p.url]"
-                      lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label class="text-base">{{ p.title }}</ion-label>
-            </ion-item>
-            <ion-item lines="none" detail="false" (click)="logout()" class="pointer" routerDirection="root" [routerLink]="[false]">
-              <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
-              <ion-label>Cerrar sesión</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list" *ngIf="team$ | async as team">
-          <p class="accent-neutral-800 mt-4 mb-6 pl-2 text-lg">{{ team.name || 'Mi Equipo:' }}</p>
-          <app-hero-swiper [team]="team.heroes" *ngIf="team.heroes && team.heroes.length > 0; else emptyTeam"></app-hero-swiper>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
-  <ng-template #emptyTeam>
-    <p class="pl-2 text-zinc-600">
-      No tienes ningún héroe en tu equipo.
-    </p>
-  </ng-template>
+  <ng-container *ngIf="(layoutConfig$ | async)?.header">
+    <app-sidemenu ></app-sidemenu>
+  </ng-container>
+  <ion-router-outlet id="main-content" [class.mt-14]="(layoutConfig$ | async)?.header"></ion-router-outlet>
 </ion-app>

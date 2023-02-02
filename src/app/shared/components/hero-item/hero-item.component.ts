@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IHero } from '../../../hero/interfaces/hero.interface';
+import { IHero } from '../../../features/hero/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero-item',

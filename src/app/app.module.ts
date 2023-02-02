@@ -3,15 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SwiperModule } from 'swiper/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeroCardComponent } from './shared/components/hero-card/hero-card.component';
-import { HeroSwiperComponent } from './shared/components/hero-swiper/hero-swiper.component';
+import { LayoutModule } from './layouts/layout.module';
 
 @NgModule({
-  declarations: [AppComponent, HeroCardComponent, HeroSwiperComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, SwiperModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    LayoutModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

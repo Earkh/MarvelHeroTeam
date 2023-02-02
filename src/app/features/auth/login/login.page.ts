@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
-import {AlertService} from "../../shared/services/alert.service";
+import { AlertService } from '../../../shared/services/alert.service';
+import { LayoutService } from '../../../layouts/services/layout.service';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +21,10 @@ export class LoginPage {
     private fb: FormBuilder,
     private menuCtrl: MenuController,
     private authService: AuthService,
-    private alertCtrl: AlertService
+    private alertCtrl: AlertService,
+    private layoutService: LayoutService
   ) {
+    this.layoutService.setLoginLayout();
     this.menuCtrl.enable(false, 'user-menu');
     this.loginForm = this.fb.group({
       email: ['pepelopez@email.com', Validators.required],
@@ -41,6 +44,5 @@ export class LoginPage {
   rememberUser() {
     this.alertCtrl.presentSimpleAlert({subheader: 'pepelopez@email.com', message: '123456'})
   }
-
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { HeroService } from '../services/hero.service';
+import { LayoutService } from '../../../layouts/services/layout.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -14,12 +15,19 @@ export class HeroListPage implements OnInit {
   limit = 30;
   offset = 0;
 
-  constructor(private heroService: HeroService) { }
+  constructor(
+    private layoutService: LayoutService,
+    private heroService: HeroService
+  ) { }
 
   ngOnInit() {
     this.heroService.getAllHeroes(this.limit, this.offset).subscribe(data => {
       this.heroesList = data;
     })
+  }
+
+  ionViewWillEnter() {
+    this.layoutService.setFullPageLayout();
   }
 
   searchHeroesByName(e: any) {
