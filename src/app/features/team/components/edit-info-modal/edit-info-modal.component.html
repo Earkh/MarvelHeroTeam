@@ -3,13 +3,13 @@
     <ion-title>Editar equipo</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content class="ion-padding white">
   <form [formGroup]="teamForm">
     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
     <input
       type="text"
       id="name"
-      class="form-input-text"
+      class="form-input-text mb-2"
       placeholder="Nombre del equipo"
       formControlName="name"
     >
@@ -17,7 +17,7 @@
     <input
       type="text"
       id="desc"
-      class="form-input-text"
+      class="form-input-text mb-2"
       placeholder="Descripción del equipo"
       formControlName="desc"
     >
