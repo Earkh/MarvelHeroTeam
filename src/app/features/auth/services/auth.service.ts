@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../interfaces/auth.interface';
+import { LayoutService } from '../../../layouts/services/layout.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private menuCtrl: MenuController
+    private layoutService: LayoutService
   ) {
     if (localStorage.hasOwnProperty('user')) {
       const userData: IUser = JSON.parse(localStorage.getItem('user')!);
@@ -47,7 +47,7 @@ export class AuthService {
   logout() {
     this._user$.next(null);
     localStorage.removeItem('user');
-    this.menuCtrl.enable(false, 'user-menu');
-    this.router.navigateByUrl('/login');
+    this.layoutService.setLoginLayout();
+    window.location.reload();
   }
 }

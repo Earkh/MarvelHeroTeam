@@ -14,8 +14,7 @@
           <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
           <ion-label class="text-base">{{ p.title }}</ion-label>
         </ion-item>
-        <ion-item lines="none" detail="false" (click)="logout()" class="pointer" routerDirection="root"
-                  [routerLink]="[false]">
+        <ion-item lines="none" detail="false" (click)="logout()" class="pointer" routerDirection="root" [routerLink]="[]">
           <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
           <ion-label>Cerrar sesión</ion-label>
         </ion-item>

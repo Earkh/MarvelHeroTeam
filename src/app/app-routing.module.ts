@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: () => import('./extrapages/extrapages.module').then(m => m.NotFound404PageModule)
+    loadChildren: () => import('./extrapages/extrapages.module').then(m => m.NotFound404PageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 
