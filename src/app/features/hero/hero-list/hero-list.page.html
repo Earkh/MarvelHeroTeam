@@ -8,7 +8,7 @@
       ></ion-searchbar>
     </div>
     <ng-container *ngIf="heroesList; else loading">
-      <ion-list class="rounded-t-sm">
+      <ion-list class="rounded-t-sm" *ngIf="heroesList.length > 0; else noResults">
         <app-hero-item *ngFor="let hero of heroesList" [routerLink]="['/hero', hero.id]" [hero]="hero"></app-hero-item>
       </ion-list>
       <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
@@ -23,3 +23,16 @@
     <ion-spinner name="crescent" class="scale-150"></ion-spinner>
   </div>
 </ng-template>
+
+<ng-template #noResults>
+  <div class="h-full w-full flex-1 flex justify-center items-center">
+    <ion-card class="p-4">
+      <ion-card-header>
+        <ion-card-subtitle class="flex items-center justify-center">
+          <ion-icon name="alert-circle-outline" color="primary" size="large" class="mr-2"></ion-icon> <span class="mt-0.5">Sin resultados</span>
+        </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ng-template>
+

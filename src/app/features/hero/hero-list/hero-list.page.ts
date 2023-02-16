@@ -34,10 +34,11 @@ export class HeroListPage implements OnInit {
     if (e.target.value.length >= 3) {
       this.heroService.getHeroesByName(e.target.value).subscribe(data => {
         this.heroesList = data;
+        console.log(this.heroesList.length)
       })
     }
     if (e.target.value.length === 0) {
-      this.heroService.getAllHeroes(20, 0).subscribe(data => {
+      this.heroService.getAllHeroes(this.limit, 0).subscribe(data => {
         this.heroesList = data;
       })
     }

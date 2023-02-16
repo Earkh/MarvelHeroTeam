@@ -39,7 +39,6 @@ export class HeroDetailedCardComponent implements OnInit, OnDestroy{
     this.alertService.presentConfirmationAlert({subheader: '¿Eliminar al Héroe del equipo?'}).then(data => {
       if (data) {
         this.teamService.removeHero(hero);
-        this.router.navigate(['/team']);
       }
     })
   }
